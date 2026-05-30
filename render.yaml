@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: signalroom
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      # SEC blocks generic agents — set this to your real contact, e.g. "Signalroom/1.0 (you@example.com)"
+      - key: SEC_USER_AGENT
+        sync: false
+      # Optional: enables the congressional-trades signal
+      - key: QUIVER_TOKEN
+        sync: false
+      # Optional: enables live price / day change
+      - key: FINNHUB_KEY
+        sync: false
