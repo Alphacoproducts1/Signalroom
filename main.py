@@ -39,6 +39,7 @@ def build_signal(symbol: str) -> dict:
         "congress":  sc.score_congress(src.fetch_congress(symbol)),
         "contracts": sc.score_contracts(src.fetch_contracts(meta["recipient"])),
         "news":      sc.score_news(src.fetch_news(symbol, meta["name"])),
+        "social":    sc.score_social(src.fetch_social(symbol, meta["name"])),
         "insider":   sc.score_insider(src.fetch_insider(symbol)),
     }
     comp = sc.composite(signals)
